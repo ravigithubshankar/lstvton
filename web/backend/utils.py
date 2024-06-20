@@ -4,7 +4,7 @@ import json
 
 from PIL import Image
 
-main_dataset_path = r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\dataset\test'
+main_dataset_path = r'/home/ravi/Desktop/LSD-VTON/web/dataset/test'
 
 
 def delete_files_in_folder(folder_path):
@@ -66,7 +66,7 @@ def make_dataset(person_id, cloth_id):
     shutil.copy(fr'{test_path}\openpose_json\{person_id}_keypoints.json',
                 fr'{main_dataset_path}\openpose_json\{person_id}_keypoints.json')
 
-    path = r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\dataset\inference.txt'
+    path = r'/home/ravi/Desktop/LSD-VTON/web/dataset/inference.txt'
     with open(path, 'w', encoding='utf-8') as file_writer:
         file_writer.write(f'{person_id}.png {cloth_id}.png upper')
 

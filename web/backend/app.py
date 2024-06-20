@@ -9,7 +9,10 @@ import uvicorn
 import webbrowser
 from fastapi.templating import Jinja2Templates
 from tryon import *
-from web.backend.database import *
+from web import *
+#from ..backend.database import *
+from database import *
+#from backend import *
 
 dbc = None
 app = FastAPI()
@@ -19,10 +22,10 @@ app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, 
                    allow_headers=['*'])
 
 # Set up Jinja2 templates
-templates = Jinja2Templates(directory=r"D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\frontend")
+templates = Jinja2Templates(directory=r"/home/ravi/Desktop/LSD-VTON/web/frontend")
 
 # Mount the static files directory
-app.mount("/static", StaticFiles(directory=r"D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\frontend\static"), name="static")
+app.mount("/static", StaticFiles(directory=r"/home/ravi/Desktop/LSD-VTON/web/frontend/static"), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)

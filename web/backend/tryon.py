@@ -14,24 +14,24 @@ def tryon(person_id, cloth_id):
     time.sleep(5)
 
     # upload a new dataset version in kaggle
-    pull_kaggle_dataset(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\dataset',
+    pull_kaggle_dataset(r'/home/ravi/Desktop/LSD-VTON/web/dataset',
                         r'mrmody476/vitonhdmody')
 
-    update_kaggle_dataset(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\dataset')
+    update_kaggle_dataset(r'/home/ravi/Desktop/LSD-VTON/web/dataset')
 
     time.sleep(20)
 
     # get inference notebook.ipynb and its metadata
-    pull_kaggle_notebook(r'mrmody476/isthisgppretrained-gp-vton',
-                         r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\notebook')
+    pull_kaggle_notebook(r'/home/ravi/Desktop/LSD-VTON/web/notebook/isthisgppretrained-gp-vton.ipynb',
+                         r'/home/ravi/Desktop/LSD-VTON/web/notebook')
 
     time.sleep(5)
 
     # enable gpu for the notebook
-    edit_json_file(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web'
-                   r'\notebook\kernel-metadata.json', 'enable_gpu', True)
+    edit_json_file(r'/home/ravi/Desktop/LSD-VTON/web'
+                   r'/home/ravi/Desktop/LSD-VTON/web/notebook/kernel-metadata.json', 'enable_gpu', True)
 
-    run_kaggle_notebook(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\notebook')
+    run_kaggle_notebook(r'/home/ravi/Desktop/LSD-VTON/web/notebook')
 
     # wait until finishing the notebook run
     while True:
@@ -52,40 +52,40 @@ def tryon(person_id, cloth_id):
 
 
 def mody_vton(person_id, cloth_id):
-    lfgp_result_path = r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset\lfgp_warping_result.jpg'
+    lfgp_result_path = r'/home/ravi/Desktop/LSD-VTON/web/mody_contribution_dataset/lfgp_warping_result.jpg'
     if os.path.exists(lfgp_result_path):
         os.remove(lfgp_result_path)
 
     os.rename(fr'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\notebook_output\upper___{person_id}___{cloth_id}',
-              r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset\lfgp_warping_result.jpg')
+              r'/home/ravi/Desktop/LSD-VTON/web/mody_contribution_dataset/lfgp_warping_result.jpg')
 
-    crop_image(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset\lfgp_warping_result.jpg',
-               r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset\lfgp_warping_result.jpg')
+    crop_image(r'/home/ravi/Desktop/LSD-VTON/web/mody_contribution_dataset/lfgp_warping_result.jpg',
+               r'/home/ravi/Desktop/LSD-VTON/web/mody_contribution_dataset/lfgp_warping_result.jpg')
 
-    with open(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset\testContribution.txt', 'w') as f:
+    with open(r'/home/ravi/Desktop/LSD-VTON/web/mody_contribution_dataset/testContribution.txt', 'w') as f:
         pid = person_id.replace('png', 'jpg')
         cid = cloth_id.replace('png', 'jpg')
         f.write(f'{pid} {cid}')
 
     # update the dataset mody_contribution_dataset
-    pull_kaggle_dataset(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset',
+    pull_kaggle_dataset(r'/home/ravi/Desktop/LSD-VTON/web/mody_contribution_dataset',
                         r'mrmody476/warping-results-mody-contribution')
 
     update_kaggle_dataset(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\mody_contribution_dataset')
 
     # run HuntingDenosingUnet notebook via kaggl api
     pull_kaggle_notebook(r'mrmody476/huntingdenosingunet',
-                         r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\notebook')
+                         r'/home/ravi/Desktop/LSD-VTON/web/notebook')
 
     # enable gpu for the notebook
-    edit_json_file(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web'
-                   r'\notebook\kernel-metadata.json', 'enable_gpu', True)
+    edit_json_file(r'/home/ravi/Desktop/LSD-VTON/web'
+                   r'/home/ravi/Desktop/LSD-VTON/web/notebook/kernel-metadata.json', 'enable_gpu', True)
 
     # enable gpu for the notebook
-    edit_json_file(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web'
-                   r'\notebook\kernel-metadata.json', 'enable_internet', True)
+    edit_json_file(r'/home/ravi/Desktop/LSD-VTON/web'
+                   r'/home/ravi/Desktop/LSD-VTON/web/notebook/kernel-metadata.json', 'enable_internet', True)
 
-    run_kaggle_notebook(r'D:\Mohamed\FCIS\4th\GP\VITON\VITONY\web\notebook')
+    run_kaggle_notebook(r'/home/ravi/Desktop/LSD-VTON/web/notebook')
 
     # wait until finishing the notebook run
     while True:
